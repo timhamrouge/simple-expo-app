@@ -15,6 +15,12 @@ export default function App() {
     setInputValue(text)
   }
 
+  const handleDeleteTodo = (todo) => {
+    return () => {
+      setTodos(todos.filter(oldTodo => { return oldTodo.name !== todo.name }))
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text>Todo list</Text>
@@ -30,7 +36,10 @@ export default function App() {
       />
       {todos && todos.map((todo) => {
         return (
+          <>
             <Text>{todo.name}</Text>
+            <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
+          </>
         )
       })}
     </View>
