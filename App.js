@@ -8,20 +8,21 @@ export default function App() {
 
 
   const handleAddTodo = () => {
-    setTodos([...todos, {name: "new todo"}])
+    setTodos([...todos, {name: inputValue}])
   }
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value)
+  const handleInputChange = (text) => {
+    setInputValue(text)
   }
 
   return (
     <View style={styles.container}>
       <Text>Todo list</Text>
       <TextInput
-        onChange={handleInputChange}
+        onChangeText={handleInputChange}
         value={inputValue}
       />
+      <Text>{inputValue}</Text>
 
       <Button
         onPress={handleAddTodo}
