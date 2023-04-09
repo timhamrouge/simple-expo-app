@@ -4,20 +4,27 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
-  const onAddTodo = () => {
+
+  const handleAddTodo = () => {
     setTodos([...todos, {name: "new todo"}])
+  }
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value)
   }
 
   return (
     <View style={styles.container}>
       <Text>Todo list</Text>
       <TextInput
-        value="hello world"
+        onChange={handleInputChange}
+        value={inputValue}
       />
 
       <Button
-        onPress={onAddTodo}
+        onPress={handleAddTodo}
         title="Add todo"
         color="#841584"
       />
@@ -26,7 +33,6 @@ export default function App() {
             <Text>{todo.name}</Text>
         )
       })}
-      {/* <StatusBar style="auto" /> */}
     </View>
   );
 }
