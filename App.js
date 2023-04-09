@@ -6,7 +6,7 @@ export default function App() {
   const [todos, setTodos] = useState([]);
 
   const onAddTodo = () => {
-    setTodos([...todos, {name: 'new todo']})
+    setTodos([...todos, {name: "new todo"}])
   }
 
   return (
@@ -15,17 +15,15 @@ export default function App() {
       <TextInput
         value="hello world"
       />
+
       <Button
         onPress={onAddTodo}
-        title="Learn More"
+        title="Add todo"
         color="#841584"
-        accessibilityLabel="Learn more about this purple button"
       />
-      {todos.map((todo) => {
+      {todos && todos.map((todo) => {
         return (
-          <div>
-            {todo}
-          </div>
+            <Text>{todo.name}</Text>
         )
       })}
       {/* <StatusBar style="auto" /> */}
