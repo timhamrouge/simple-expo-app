@@ -22,7 +22,6 @@ export default function App() {
         onChangeText={handleInputChange}
         value={inputValue}
       />
-      <Text>{inputValue}</Text>
 
       <Button
         onPress={handleAddTodo}
