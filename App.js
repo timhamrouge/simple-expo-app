@@ -62,7 +62,7 @@ export default function App() {
           <Item
             todo={item}
             handleDeleteTodo={handleDeleteTodo}
-            handleCOmpleteTodo={handleCompleteTodo}
+            handleCompleteTodo={handleCompleteTodo}
             key={item.id}
           />
         )}
