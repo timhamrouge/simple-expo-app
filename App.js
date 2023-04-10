@@ -2,6 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
+const Item = ({todo, handleDeleteTodo}) => (
+  <View>
+  {/* <View style={styles.row}> */}
+    <Text>{todo.name}</Text>
+    <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
+  </View>
+);
+
+
 export default function App() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -37,10 +46,11 @@ export default function App() {
       />
       {todos && todos.map((todo) => {
         return (
-          <>
-            <Text>{todo.name}</Text>
-            <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
-          </>
+          <Item
+            todo={todo}
+            handleDeleteTodo={handleDeleteTodo}
+            key={todo.id}
+          />
         )
       })}
     </View>
@@ -57,5 +67,8 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     width: "70%"
-  }
+  },
+  // row: {
+  //   display: "inline-block",
+  // }
 });
