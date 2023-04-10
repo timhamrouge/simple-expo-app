@@ -8,7 +8,7 @@ export default function App() {
 
 
   const handleAddTodo = () => {
-    setTodos([...todos, {name: inputValue}])
+    setTodos([...todos, {id: todos.length, name: inputValue}])
   }
 
   const handleInputChange = (text) => {
@@ -17,7 +17,7 @@ export default function App() {
 
   const handleDeleteTodo = (todo) => {
     return () => {
-      setTodos(todos.filter(oldTodo => { return oldTodo.name !== todo.name }))
+      setTodos(todos.filter(oldTodo => { return oldTodo.id !== todo.id }))
     }
   }
 
@@ -59,4 +59,3 @@ const styles = StyleSheet.create({
     width: "70%"
   }
 });
-
