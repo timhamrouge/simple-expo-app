@@ -2,10 +2,14 @@
 import { useState } from "react";
 import { Button, FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 
+const ButtonText = (completedStatus) => (
+  completedStatus ? "Not complete" : "Complete"
+);
+
 const Item = ({todo, handleDeleteTodo, handleCompleteTodo}) => (
   <View style={styles.row}>
     <Text>{todo.name} - {String(todo.completed)}</Text>
-    <Button onPress={handleCompleteTodo(todo)} title={todo.complete ? "Not-complete" : "Complete"}></Button>
+    <Button onPress={handleCompleteTodo(todo)} title={ButtonText(todo.completed)}></Button>
     <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
   </View>
 );
