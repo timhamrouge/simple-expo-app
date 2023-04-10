@@ -5,7 +5,7 @@ import { Button, FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } fro
 const Item = ({todo, handleDeleteTodo, handleCompleteTodo}) => (
   <View style={styles.row}>
     <Text>{todo.name} - {String(todo.completed)}</Text>
-    <Button onPress={handleCompleteTodo(todo)} title="Complete"></Button>
+    <Button onPress={handleCompleteTodo(todo)} title={todo.complete ? "Not-complete" : "Complete"}></Button>
     <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
   </View>
 );
@@ -34,7 +34,7 @@ export default function App() {
     return () => {
       setTodos(todos.map(oldTodo => { 
         if (oldTodo.id === todo.id) {
-          oldTodo.completed = true
+          oldTodo.completed = !oldTodo.completed
         }
         return oldTodo
       }))
