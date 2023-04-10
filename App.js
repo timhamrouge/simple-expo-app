@@ -3,8 +3,7 @@ import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const Item = ({todo, handleDeleteTodo}) => (
-  <View>
-  {/* <View style={styles.row}> */}
+  <View style={styles.row}>
     <Text>{todo.name}</Text>
     <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
   </View>
@@ -68,7 +67,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: "70%"
   },
-  // row: {
-  //   display: "inline-block",
-  // }
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "60%",
+  }
 });
