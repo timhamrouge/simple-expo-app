@@ -25,6 +25,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>Todo list</Text>
       <TextInput
+        style={styles.input}
         onChangeText={handleInputChange}
         value={inputValue}
       />
@@ -53,4 +54,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input: {
+    borderWidth: 1,
+    width: "70%"
+  }
 });
+
