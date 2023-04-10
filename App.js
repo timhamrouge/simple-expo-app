@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { Button, FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 
-const Item = ({todo, handleDeleteTodo}) => (
+const Item = ({todo, handleDeleteTodo, handleCompleteTodo}) => (
   <View style={styles.row}>
-    <Text>{todo.name}</Text>
+    <Text>{todo.name} - {String(todo.completed)}</Text>
+    <Button onPress={handleCompleteTodo(todo)} title="Complete"></Button>
     <Button onPress={handleDeleteTodo(todo)} title="Delete"></Button>
   </View>
 );
@@ -16,7 +17,7 @@ export default function App() {
 
 
   const handleAddTodo = () => {
-    setTodos([...todos, {id: todos.length, name: inputValue}])
+    setTodos([...todos, {id: todos.length, name: inputValue, completed: false}])
   }
 
   const handleInputChange = (text) => {
@@ -26,6 +27,17 @@ export default function App() {
   const handleDeleteTodo = (todo) => {
     return () => {
       setTodos(todos.filter(oldTodo => { return oldTodo.id !== todo.id }))
+    }
+  }
+
+  const handleCompleteTodo = (todo) => {
+    return () => {
+      setTodos(todos.map(oldTodo => { 
+        if (oldTodo.id === todo.id) {
+          oldTodo.completed = true
+        }
+        return oldTodo
+      }))
     }
   }
 
@@ -50,6 +62,7 @@ export default function App() {
           <Item
             todo={item}
             handleDeleteTodo={handleDeleteTodo}
+            handleCOmpleteTodo={handleCompleteTodo}
             key={item.id}
           />
         )}
