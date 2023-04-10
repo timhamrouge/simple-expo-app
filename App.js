@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const Item = ({todo, handleDeleteTodo}) => (
   <View style={styles.row}>
@@ -30,29 +30,31 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+
       <Text>Todo list</Text>
       <TextInput
         style={styles.input}
         onChangeText={handleInputChange}
         value={inputValue}
-      />
+        />
 
       <Button
         onPress={handleAddTodo}
         title="Add todo"
         color="#841584"
-      />
-      {todos && todos.map((todo) => {
-        return (
+        />
+      <FlatList
+        data={todos}
+        renderItem={({ item }) => (
           <Item
-            todo={todo}
+            todo={item}
             handleDeleteTodo={handleDeleteTodo}
-            key={todo.id}
+            key={item.id}
           />
-        )
-      })}
-    </View>
+        )}
+      />
+    </SafeAreaView>
   );
 }
 
@@ -72,5 +74,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "60%",
+    marginVertical: 10,
   }
 });
