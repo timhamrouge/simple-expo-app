@@ -49,6 +49,8 @@ export default function App() {
     <SafeAreaView style={styles.container}>
 
       <Text>Todo list</Text>
+      <View style={styles.todoAdder}>
+
       <TextInput
         style={styles.input}
         onChangeText={handleInputChange}
@@ -60,6 +62,7 @@ export default function App() {
         title="Add todo"
         color="#841584"
         />
+      </View>
       <FlatList
         data={todos}
         renderItem={({ item }) => (
