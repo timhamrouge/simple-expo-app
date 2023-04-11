@@ -64,6 +64,7 @@ export default function App() {
         />
       </View>
       <FlatList
+        style={styles.todoList}
         data={todos}
         renderItem={({ item }) => (
           <Item
@@ -99,5 +100,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "60%",
     marginVertical: 10,
+  },
+  todoList: {
+    maxHeight: 300
   }
 });
