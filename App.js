@@ -84,10 +84,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 100
   },
   input: {
     borderWidth: 1,
     width: "70%"
+  },
+  todoAdder: {
+    flexDirection: "row",
   },
   row: {
     flexDirection: "row",
